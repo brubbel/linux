@@ -4581,16 +4581,16 @@ brcmf_cfg80211_start_ap(struct wiphy *wiphy, struct net_device *ndev,
 			}
 		}
 
-		if ((dev_role == NL80211_IFTYPE_AP) &&
-		    ((ifp->ifidx == 0) ||
-		     !brcmf_feat_is_enabled(ifp, BRCMF_FEAT_RSDB))) {
-			err = brcmf_fil_cmd_int_set(ifp, BRCMF_C_DOWN, 1);
-			if (err < 0) {
-				brcmf_err("BRCMF_C_DOWN error %d\n", err);
-				goto exit;
-			}
-			brcmf_fil_iovar_int_set(ifp, "apsta", 0);
-		}
+//		if ((dev_role == NL80211_IFTYPE_AP) &&
+//		    ((ifp->ifidx == 0) ||
+//		     !brcmf_feat_is_enabled(ifp, BRCMF_FEAT_RSDB))) {
+//			err = brcmf_fil_cmd_int_set(ifp, BRCMF_C_DOWN, 1);
+//			if (err < 0) {
+//				brcmf_err("BRCMF_C_DOWN error %d\n", err);
+//				goto exit;
+//			}
+//			brcmf_fil_iovar_int_set(ifp, "apsta", 0);
+//		}
 
 		err = brcmf_fil_cmd_int_set(ifp, BRCMF_C_SET_INFRA, 1);
 		if (err < 0) {
@@ -4721,9 +4721,9 @@ static int brcmf_cfg80211_stop_ap(struct wiphy *wiphy, struct net_device *ndev)
 					     &join_params, sizeof(join_params));
 		if (err < 0)
 			brcmf_err("SET SSID error (%d)\n", err);
-		err = brcmf_fil_cmd_int_set(ifp, BRCMF_C_DOWN, 1);
-		if (err < 0)
-			brcmf_err("BRCMF_C_DOWN error %d\n", err);
+//		err = brcmf_fil_cmd_int_set(ifp, BRCMF_C_DOWN, 1);
+//		if (err < 0)
+//			brcmf_err("BRCMF_C_DOWN error %d\n", err);
 		err = brcmf_fil_cmd_int_set(ifp, BRCMF_C_SET_AP, 0);
 		if (err < 0)
 			brcmf_err("setting AP mode failed %d\n", err);
